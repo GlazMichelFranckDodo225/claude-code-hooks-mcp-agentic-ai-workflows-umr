@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Future Me — Letters to Your Future Self</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="header-inner">
+      <div class="logo">
+        <span class="logo-icon">✉</span>
+        <span class="logo-text">Future<strong>Me</strong></span>
+      </div>
+      <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark / light mode">
+          <span class="theme-icon">🌙</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="main">
+    <!-- Hero -->
+    <section class="hero">
+      <h1 class="hero-title">Write a Letter to <span class="accent">Future You</span></h1>
+      <p class="hero-sub">Seal your thoughts today. Your future self will thank you.</p>
+      <div class="quote-box" id="quoteBox">
+        <span class="quote-mark">"</span>
+        <p class="quote-text" id="quoteText">Loading quote…</p>
+        <span class="quote-mark">"</span>
+      </div>
+    </section>
+
+    <!-- Compose form -->
+    <section class="card compose-card" id="composeSection">
+      <h2 class="card-title">
+        <span class="step-badge">1</span> Compose Your Letter
+      </h2>
+
+      <form id="letterForm" novalidate>
+        <div class="field-group">
+          <label for="authorName">Your Name</label>
+          <input type="text" id="authorName" placeholder="e.g. Alex" maxlength="60" required />
+          <span class="field-error" id="nameError"></span>
+        </div>
+
+        <div class="field-group">
+          <label for="letterTitle">Letter Title</label>
+          <input type="text" id="letterTitle" placeholder="e.g. Goals for next year" maxlength="80" required />
+          <span class="field-error" id="titleError"></span>
+        </div>
+
+        <div class="field-group">
+          <label for="letterMessage">Your Message</label>
+          <textarea id="letterMessage" rows="7" placeholder="Dear future me…" maxlength="3000" required></textarea>
+          <div class="char-counter"><span id="charCount">0</span> / 3000</div>
+          <span class="field-error" id="messageError"></span>
+        </div>
+
+        <div class="field-group">
+          <label for="revealDate">Reveal Date</label>
+          <input type="date" id="revealDate" required />
+          <span class="field-hint">Must be at least 1 day in the future.</span>
+          <span class="field-error" id="dateError"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-full">
+          <span>Seal &amp; Save Letter</span>
+          <span class="btn-icon">🔒</span>
+        </button>
+      </form>
+    </section>
+
+    <!-- Dashboard -->
+    <section class="dashboard-section" id="dashboardSection">
+      <div class="dashboard-header">
+        <h2 class="card-title" style="margin:0">
+          <span class="step-badge">2</span> Your Time Capsule
+        </h2>
+        <div class="stats">
+          <span class="stat"><strong id="totalCount">0</strong> letters</span>
+          <span class="stat accent"><strong id="unlockedCount">0</strong> unlocked</span>
+        </div>
+      </div>
+
+      <div id="emptyState" class="empty-state hidden">
+        <div class="empty-icon">📬</div>
+        <p>No letters yet. Write your first one above!</p>
+      </div>
+
+      <div class="letters-grid" id="lettersGrid"></div>
+    </section>
+  </main>
+
+  <!-- Reveal Modal -->
+  <div class="modal-overlay hidden" id="modalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal reveal-modal" id="revealModal">
+      <button class="modal-close" id="modalClose" aria-label="Close">✕</button>
+      <div class="reveal-animation">
+        <div class="envelope-open">✉</div>
+      </div>
+      <h2 id="modalTitle" class="modal-letter-title"></h2>
+      <p class="modal-meta" id="modalMeta"></p>
+      <div class="modal-message" id="modalMessage"></div>
+      <button class="btn btn-primary" id="modalCloseBtn">Close</button>
+    </div>
+  </div>
+
+  <!-- Delete confirm -->
+  <div class="modal-overlay hidden" id="deleteOverlay">
+    <div class="modal delete-modal">
+      <h3>Delete this letter?</h3>
+      <p>This action cannot be undone.</p>
+      <div class="modal-actions">
+        <button class="btn btn-ghost" id="deleteCancelBtn">Cancel</button>
+        <button class="btn btn-danger" id="deleteConfirmBtn">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>Made with ❤ — Future<strong>Me</strong> &copy; <span id="footerYear"></span></p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
