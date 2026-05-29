@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Color Palette Explorer</title>
+
+  <!-- Google Fonts: Poppins (headings) + Inter (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Hero -->
+  <header class="hero">
+    <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">
+      <span class="theme-toggle__icon">🌙</span>
+    </button>
+    <div class="hero__inner">
+      <h1 class="hero__title">Color Palette Explorer</h1>
+      <p class="hero__subtitle">
+        Discover 20 handpicked colors. Click any card to copy its HEX and paint the page.
+      </p>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Search -->
+    <section class="toolbar">
+      <div class="search">
+        <span class="search__icon" aria-hidden="true">🔍</span>
+        <input
+          id="search"
+          class="search__input"
+          type="text"
+          placeholder="Search by name or hex (e.g. coral or #FF6B6B)…"
+          autocomplete="off"
+        />
+      </div>
+    </section>
+
+    <!-- Recently viewed -->
+    <section class="recent" id="recentSection" hidden>
+      <h2 class="recent__title">Recently Viewed</h2>
+      <div class="recent__swatches" id="recentSwatches"></div>
+    </section>
+
+    <!-- Grid -->
+    <section class="grid" id="grid" aria-live="polite"></section>
+
+    <p class="empty" id="emptyState" hidden>No colors match your search.</p>
+  </main>
+
+  <!-- Toast -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="colors.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

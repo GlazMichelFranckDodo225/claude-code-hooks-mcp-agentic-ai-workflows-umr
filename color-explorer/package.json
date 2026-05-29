@@ -1,0 +1,19 @@
+{
+  "name": "color-palette-explorer",
+  "version": "1.0.0",
+  "description": "A beautiful Color Palette Explorer web app built with Node.js and Express.",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "colors",
+    "palette",
+    "express"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
